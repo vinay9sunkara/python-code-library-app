@@ -15,7 +15,7 @@ services:
       replicas : 3
 
   book_service:
-    image: vinay9191/mypthonapp:booksimage
+    image: vinay9191/mypthonapp:bookimage
     ports:
       - "5002:5002"
     deploy:
