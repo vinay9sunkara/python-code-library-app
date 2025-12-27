@@ -1,38 +1,47 @@
 ---
 services:
+
   db:
-    image: vinay9191/mypthonapp:dbimage
+    image: vinay9191/mypythonapp:dbimage
     ports:
       - "3306:3306"
     deploy:
-      replicas : 3
+      replicas: 1
+      restart_policy:
+        condition: on-failure
 
   auth_service:
-    image: vinay9191/mypthonapp:authimage
+    image: vinay9191/mypythonapp:authimage
     ports:
       - "5001:5001"
     deploy:
-      replicas : 3
-    depends_on:
-      - db
+      replicas: 3
+      restart_policy:
+        condition: on-failure
 
   book_service:
-    image: vinay9191/mypthonapp:bookimage
+    image: vinay9191/mypythonapp:bookimage
     ports:
       - "5002:5002"
     deploy:
-      replicas : 3
+      replicas: 3
+      restart_policy:
+        condition: on-failure
 
   borrow_service:
-    image: vinay9191/mypthonapp:borrowimage
+    image: vinay9191/mypythonapp:borrowimage
     ports:
       - "5003:5003"
     deploy:
-      replicas : 3
+      replicas: 3
+      restart_policy:
+        condition: on-failure
 
   frontend:
-    image: vinay9191/mypthonapp:frontimage
+    image: vinay9191/mypythonapp:frontimage
     ports:
       - "5000:5000"
     deploy:
-      replicas : 3
+      replicas: 3
+      restart_policy:
+        condition: on-failure
