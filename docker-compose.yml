@@ -20,7 +20,6 @@ services:
       - "5002:5002"
     deploy:
       replicas :3
-      borrow_service
 
   borrow_service:
     image: vinay9191/mypthonapp:borrowimage
