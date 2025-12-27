@@ -13,6 +13,8 @@ services:
       - "5001:5001"
     deploy:
       replicas : 3
+    depends_on:
+      - db
 
   book_service:
     image: vinay9191/mypthonapp:bookimage
