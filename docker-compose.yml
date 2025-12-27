@@ -5,34 +5,34 @@ services:
     ports:
       - "3306:3306"
     deploy:
-      replicas :3
+      replicas : 3
 
   auth_service:
     image: vinay9191/mypthonapp:authimage
     ports:
       - "5001:5001"
     deploy:
-      replicas :3
+      replicas : 3
 
   book_service:
     image: vinay9191/mypthonapp:booksimage
     ports:
       - "5002:5002"
     deploy:
-      replicas :3
+      replicas : 3
 
   borrow_service:
     image: vinay9191/mypthonapp:borrowimage
     ports:
       - "5003:5003"
     deploy:
-      replicas :3
+      replicas : 3
 
   frontend:
     image: vinay9191/mypthonapp:frontimage
     ports:
       - "5000:5000"
     deploy:
-      replicas :3
+      replicas : 3
     depends_on:
       - db
