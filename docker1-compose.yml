@@ -1,0 +1,44 @@
+---
+services:
+  db:
+    image: vinay9191/pro3:dbimage
+    ports:
+      - "3306:3306"
+
+  auth_service:
+    image: vinay9191/pro3:authimage
+    ports:
+      - "5001:5001"
+    deploy:
+      replicas: 1
+    depends_on:
+      - db
+
+  book_service:
+    image: vinay9191/pro3:bookimage
+    ports:
+      - "5002:5002"
+    deploy:
+      replicas: 1
+    depends_on:
+      - db
+  
+  borrow_service:
+    image: vinay9191/pro3:borrowimage
+    ports:
+      - "5003:5003"
+    deploy:
+      replicas: 1
+    depends_on:
+      - db
+  
+  app_service:
+    image: vinay9191/pro3:appimage
+    ports:
+      - "5000:5000"
+    deploy:
+      replicas: 1
+    depends_on:
+      - auth_service
+      - book_service
+      - borrow_service
